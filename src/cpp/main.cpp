@@ -12,20 +12,20 @@
 
 #define DIM 800
 
-int launchApplication();
-int launchApplicationOMP();
+int launchClouds();
+int launchCloudsOMP();
 int bench();
 
 int main(void){
-    //return launchApplication();
-    return  launchApplicationOMP();
+    //return launchClouds();
+    return  launchCloudsOMP();
     //return bench();
 }
 
 void display(PerlinImage* image);
 
-int launchApplication(){
-    std::cout << "Launch the Perlin Sequential Application" << std::endl;
+int launchClouds(){
+    std::cout << "Launch the Perlin Clouds Sequential Application" << std::endl;
 
     DomaineMaths domain(0, 0, DIM, DIM);
     display(new PerlinImageSequential(DIM, DIM, domain));
@@ -33,10 +33,10 @@ int launchApplication(){
     return 0;
 }
 
-int launchApplicationOMP(){
+int launchCloudsOMP(){
     omp_set_num_threads(THREADS);
 
-    std::cout << "Launch the Perlin OMP Application with THREADS=" << THREADS << std::endl;
+    std::cout << "Launch the Perlin Clouds OMP Application with THREADS=" << THREADS << std::endl;
 
     DomaineMaths domain(0, 0, DIM, DIM);
     display(new PerlinImageOMP(DIM, DIM, domain));
