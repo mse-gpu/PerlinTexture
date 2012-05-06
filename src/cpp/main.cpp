@@ -17,29 +17,29 @@ int launchApplicationOMP();
 int bench();
 
 int main(void){
-    return launchApplication();
-    //return  launchApplicationOMP();
+    //return launchApplication();
+    return  launchApplicationOMP();
     //return bench();
 }
 
 void display(PerlinImage* image);
 
-int launchApplicationOMP(){
-    omp_set_num_threads(THREADS);
-
-    std::cout << "Launch the Perlin application" << std::endl;
+int launchApplication(){
+    std::cout << "Launch the Perlin Sequential Application" << std::endl;
 
     DomaineMaths domain(0, 0, DIM, DIM);
-    display(new PerlinImageOMP(DIM, DIM, domain));
+    display(new PerlinImageSequential(DIM, DIM, domain));
 
     return 0;
 }
 
-int launchApplication(){
-    std::cout << "Launch the Perlin OMP" << std::endl;
+int launchApplicationOMP(){
+    omp_set_num_threads(THREADS);
+
+    std::cout << "Launch the Perlin OMP Application with THREADS=" << THREADS << std::endl;
 
     DomaineMaths domain(0, 0, DIM, DIM);
-    display(new PerlinImageSequential(DIM, DIM, domain));
+    display(new PerlinImageOMP(DIM, DIM, domain));
 
     return 0;
 }

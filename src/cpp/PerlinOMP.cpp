@@ -3,6 +3,7 @@
 #include "omp.h"
 
 #include "PerlinOMP.hpp"
+#include "PerlinNoise.hpp"
 
 PerlinImageOMP::PerlinImageOMP(int m, int n, DomaineMaths domain) : PerlinImage(m,n,domain){
     //Nothing to init
@@ -26,9 +27,9 @@ void PerlinImageOMP::refreshAll(const DomaineMaths& domainNew){
 	    float x = domainNew.x0;
 
 	    for(int j = 1; j <= w; ++j){
-		float c = color(x,y);
+		float c = perlinNoise(x+t,y);
 
-		setRGBA(i, j, c, c, c, 255);
+		setRGBA(i, j, 135, 206, 250, c * 255.0);
 
 		x += dx;
 	    }
@@ -38,15 +39,4 @@ void PerlinImageOMP::refreshAll(const DomaineMaths& domainNew){
 	    i += THREADS;
 	}
     }
-}
-
-float PerlinImageOMP::color(float x, float y){
-    return 128 + 127 * ((cos(d(x,y) / (float)10 -(t / (float)7))) / (d(x,y) / 10 + 1));
-}
-
-float PerlinImageOMP::d(float x, float y){
-    float fx = x - (getW() / 2);
-    float fy = y - (getH() / 2);
-
-    return sqrt(fx * fx + fy * fy);
 }
