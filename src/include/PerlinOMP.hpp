@@ -1,10 +1,10 @@
-#include "Rippling.hpp"
+#include "Perlin.hpp"
 
 #define THREADS 12
 
-class RipplingImageOMP : public RipplingImage {
+class PerlinImageOMP : public PerlinImage {
     public:
-	RipplingImageOMP(int m, int n, DomaineMaths domain);
+	PerlinImageOMP(int m, int n, DomaineMaths domain);
 
     protected:
 	virtual void refreshAll(const DomaineMaths& domainNew);

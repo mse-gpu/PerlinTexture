@@ -2,13 +2,13 @@
 #include <cmath>
 #include "omp.h"
 
-#include "RipplingSequential.hpp"
+#include "PerlinSequential.hpp"
 
-RipplingImageSequential::RipplingImageSequential(int m, int n, DomaineMaths domain) : RipplingImage(m,n,domain) {
+PerlinImageSequential::PerlinImageSequential(int m, int n, DomaineMaths domain) : PerlinImage(m,n,domain) {
     //Nothing to do
 }
 
-void RipplingImageSequential::refreshAll(const DomaineMaths& domainNew){
+void PerlinImageSequential::refreshAll(const DomaineMaths& domainNew){
     int w = getW();
     int h = getH();
 
@@ -31,11 +31,11 @@ void RipplingImageSequential::refreshAll(const DomaineMaths& domainNew){
     }
 }
 
-float RipplingImageSequential::color(float x, float y){
+float PerlinImageSequential::color(float x, float y){
     return 128 + 127 * ((cos(d(x,y) / (float)10 -(t / (float)7))) / (d(x,y) / 10 + 1));
 }
 
-float RipplingImageSequential::d(float x, float y){
+float PerlinImageSequential::d(float x, float y){
     float fx = x - (getW() / 2);
     float fy = y - (getH() / 2);
 

@@ -1,8 +1,8 @@
-#include "Rippling.hpp"
+#include "Perlin.hpp"
 
-class RipplingImageSequential : public RipplingImage {
+class PerlinImageSequential : public PerlinImage {
     public:
-	RipplingImageSequential(int m, int n, DomaineMaths domain);
+	PerlinImageSequential(int m, int n, DomaineMaths domain);
 
     protected:
 	virtual void refreshAll(const DomaineMaths& domainNew);

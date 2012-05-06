@@ -6,9 +6,9 @@
 #include "ImageFonctionelSelectionMOOs.h"
 #include "GLImageFonctionelSelections.h"
 
-class RipplingImage : public ImageFonctionelSelectionMOOs {
+class PerlinImage : public ImageFonctionelSelectionMOOs {
     public:
-	RipplingImage(int m, int n, DomaineMaths domain);
+	PerlinImage(int m, int n, DomaineMaths domain);
 
 	void setT(float t);
 
@@ -19,9 +19,9 @@ class RipplingImage : public ImageFonctionelSelectionMOOs {
 	float t;
 };
 
-class RipplingGLImage : public GLImageFonctionelSelections {
+class PerlinGLImage : public GLImageFonctionelSelections {
     public:
-	RipplingGLImage(RipplingImage* image);
+	PerlinGLImage(PerlinImage* image);
 
     private:
 	float t;
@@ -29,7 +29,7 @@ class RipplingGLImage : public GLImageFonctionelSelections {
 
 	void idleFunc();
 
-	RipplingImage* image;
+	PerlinImage* image;
 };
 
 #endif

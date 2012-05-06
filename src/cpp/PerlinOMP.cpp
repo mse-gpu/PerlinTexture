@@ -2,13 +2,13 @@
 #include <cmath>
 #include "omp.h"
 
-#include "RipplingOMP.hpp"
+#include "PerlinOMP.hpp"
 
-RipplingImageOMP::RipplingImageOMP(int m, int n, DomaineMaths domain) : RipplingImage(m,n,domain){
+PerlinImageOMP::PerlinImageOMP(int m, int n, DomaineMaths domain) : PerlinImage(m,n,domain){
     //Nothing to init
 }
 
-void RipplingImageOMP::refreshAll(const DomaineMaths& domainNew){
+void PerlinImageOMP::refreshAll(const DomaineMaths& domainNew){
     const int w = getW();
     const int h = getH();
 
@@ -40,11 +40,11 @@ void RipplingImageOMP::refreshAll(const DomaineMaths& domainNew){
     }
 }
 
-float RipplingImageOMP::color(float x, float y){
+float PerlinImageOMP::color(float x, float y){
     return 128 + 127 * ((cos(d(x,y) / (float)10 -(t / (float)7))) / (d(x,y) / 10 + 1));
 }
 
-float RipplingImageOMP::d(float x, float y){
+float PerlinImageOMP::d(float x, float y){
     float fx = x - (getW() / 2);
     float fy = y - (getH() / 2);
 

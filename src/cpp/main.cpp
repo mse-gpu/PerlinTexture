@@ -6,9 +6,9 @@
 
 #include "ChronoOMPs.h"
 
-#include "Rippling.hpp"
-#include "RipplingSequential.hpp"
-#include "RipplingOMP.hpp"
+#include "Perlin.hpp"
+#include "PerlinSequential.hpp"
+#include "PerlinOMP.hpp"
 
 #define DIM 600
 
@@ -22,7 +22,7 @@ int main(void){
     //return bench();
 }
 
-void display(RipplingImage* image);
+void display(PerlinImage* image);
 
 int launchApplicationOMP(){
     omp_set_num_threads(THREADS);
@@ -30,7 +30,7 @@ int launchApplicationOMP(){
     std::cout << "Launch the Perlin application" << std::endl;
 
     DomaineMaths domain(0, 0, DIM, DIM);
-    display(new RipplingImageOMP(DIM, DIM, domain));
+    display(new PerlinImageOMP(DIM, DIM, domain));
 
     return 0;
 }
@@ -39,16 +39,16 @@ int launchApplication(){
     std::cout << "Launch the Perlin OMP" << std::endl;
 
     DomaineMaths domain(0, 0, DIM, DIM);
-    display(new RipplingImageSequential(DIM, DIM, domain));
+    display(new PerlinImageSequential(DIM, DIM, domain));
 
     return 0;
 }
 
-void display(RipplingImage* image){
+void display(PerlinImage* image){
     char** argv = NULL;
     GLUTWindowManagers::init(0, argv);
 
-    RipplingGLImage* glImage = new RipplingGLImage(image);
+    PerlinGLImage* glImage = new PerlinGLImage(image);
 
     GLUTWindowManagers* windowManager = GLUTWindowManagers::getInstance();
     windowManager->createWindow(glImage);
