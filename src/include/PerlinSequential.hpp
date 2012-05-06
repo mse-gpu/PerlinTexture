@@ -6,8 +6,4 @@ class PerlinImageSequential : public PerlinImage {
 
     protected:
 	virtual void refreshAll(const DomaineMaths& domainNew);
-
-    private:
-	float color(float x, float y);
-	float d(float x, float y);
 };

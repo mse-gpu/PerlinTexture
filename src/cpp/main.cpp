@@ -10,7 +10,7 @@
 #include "PerlinSequential.hpp"
 #include "PerlinOMP.hpp"
 
-#define DIM 600
+#define DIM 800
 
 int launchApplication();
 int launchApplicationOMP();
