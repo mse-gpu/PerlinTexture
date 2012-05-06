@@ -8,17 +8,20 @@
 
 #include "Perlin.hpp"
 #include "PerlinSequential.hpp"
+#include "FireSequential.hpp"
 #include "PerlinOMP.hpp"
 
 #define DIM 800
 
 int launchClouds();
 int launchCloudsOMP();
+int launchFire();
+
 int bench();
 
 int main(void){
     //return launchClouds();
-    return  launchCloudsOMP();
+    //return  launchCloudsOMP();
     //return bench();
 }
 
