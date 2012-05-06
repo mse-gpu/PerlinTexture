@@ -8,7 +8,7 @@ PerlinImage::PerlinImage(int m, int n, DomaineMaths domain) : ImageFonctionelSel
     //Nothing to init
 }
 
-void PerlinImage::setT(float newT){
+void PerlinImage::setT(int newT){
     t = newT;
 
     refreshAll(getCurrentDomaine());
@@ -19,14 +19,11 @@ void PerlinImage::onDomaineChangePerformed(const DomaineMaths& domainNew){
 }
 
 PerlinGLImage::PerlinGLImage(PerlinImage* image) : GLImageFonctionelSelections(image), image(image) {
-    t = 1;
-
-    //Define the speed of the animation
-    dt = 2 * (atan(1) * 4) / (float) 36;
+    t = 0;
 }
 
 void PerlinGLImage::idleFunc(){
-    t += dt;
+    ++t;
     image->setT(t);
     updateView();
 }

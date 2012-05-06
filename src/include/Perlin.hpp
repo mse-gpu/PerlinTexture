@@ -10,7 +10,7 @@ class PerlinImage : public ImageFonctionelSelectionMOOs {
     public:
 	PerlinImage(int m, int n, DomaineMaths domain);
 
-	void setT(float t);
+	void setT(int t);
 
     protected:
 	void onDomaineChangePerformed(const DomaineMaths& domainNew);
@@ -24,8 +24,7 @@ class PerlinGLImage : public GLImageFonctionelSelections {
 	PerlinGLImage(PerlinImage* image);
 
     private:
-	float t;
-	float dt;
+	int t;
 
 	void idleFunc();
 
