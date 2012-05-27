@@ -20,8 +20,8 @@ int bench();
 
 int main(void){
     //return launchClouds();
-    //return  launchCloudsOMP();
-    return bench();
+    return  launchCloudsOMP();
+    //return bench();
 }
 
 void display(PerlinImage* image);
@@ -91,7 +91,7 @@ inline void benchSequential(rgba* image){
 	float x = domain.x0;
 
 	for(int j = 1; j <= DIM_H; ++j){
-	    float c = perlinNoise(x,y);
+	    float c = perlinNoise(x,y, 1);
 
 	    setFloatRGBA(image, i, j, 135, 206, 250, c * 255.0);
 
@@ -123,7 +123,7 @@ inline void benchParallel(rgba* image){
 	    float x = domain.x0;
 
 	    for(int j = 1; j <= DIM_H; ++j){
-		float c = perlinNoise(x,y);
+		float c = perlinNoise(x,y, 1);
 
 		setFloatRGBA(image, i, j, 135, 206, 250, c * 255.0);
 

@@ -21,7 +21,7 @@ void PerlinImageSequential::refreshAll(const DomaineMaths& domainNew){
 	float x = domainNew.x0;
 
 	for(int j = 1; j <= w; ++j){
-	    float c = perlinNoise(x+t,y);
+	    float c = perlinNoise(x,y,t);
 
 	    setRGBA(i, j, 135, 206, 250, c * 255.0);
 

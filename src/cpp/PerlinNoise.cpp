@@ -32,13 +32,25 @@ float smooth(float x, float y){
     return interpolate(i1, i2, y - (int)y);
 }
 
-float perlinNoise(float x, float y){
+float scale(float from, float to, int scale, int t){
+    float direction = t % (scale * 2);
+
+    if(direction < scale){
+	return from + (to - from) * (float)(t % scale) / (float)scale;
+    } else {
+	return to - (to - from) * (float)(t % scale) / (float)scale;
+    }
+}
+
+float perlinNoise(float x, float y, int t){
     float total = 0.0;
 
-    float frequency = 0.015;
-    float persistence = 0.65;
-    float octaves = 16;
-    float amplitude = 1;
+    float frequency = scale(0.010, 0.025, 5000, t);
+    float persistence = scale(0.20, 0.65, 5000, t);
+    float octaves = scale(2, 33, 5000, t);
+    float amplitude = 0.5;
+
+    x = x + t / 10;
 
     for(int lcv = 0; lcv < octaves; ++lcv){
 	total += smooth(x * frequency, y * frequency) * amplitude;
